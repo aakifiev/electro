@@ -1,7 +1,5 @@
 package electro;
 
-import electro.model.GardenPlot;
-import electro.model.Record;
 import electro.services.GardenPlotService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
