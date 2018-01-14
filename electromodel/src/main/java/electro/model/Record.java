@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @JsonIgnoreProperties({"date"})
@@ -20,13 +21,14 @@ public class Record implements Serializable {
     @JoinColumn(name = "garden_plot_id")
     private GardenPlot gardenPlot;*/
     private Long gardenPlotId;
-    private LocalDateTime date;
+    //private LocalDateTime date;
+    private Date date;
     private Long count;
 
     public Record() {
     }
 
-    public Record(Long gardenPlotId, LocalDateTime date, Long count) {
+    public Record(Long gardenPlotId, Date date, Long count) {
         this.gardenPlotId = gardenPlotId;
         this.date = date;
         this.count = count;
@@ -44,11 +46,11 @@ public class Record implements Serializable {
         this.gardenPlotId = gardenPlotId;
     }
 
-    public LocalDateTime getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDateTime date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

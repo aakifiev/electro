@@ -76,7 +76,7 @@ public class GardenPlot implements Serializable {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                //", records=" + records +
+                ", bill=" + bill +
                 '}';
     }
 }

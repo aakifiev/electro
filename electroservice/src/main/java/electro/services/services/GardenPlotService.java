@@ -22,7 +22,7 @@ public class GardenPlotService {
         return gardenPlotRepository.findOne(id);
     }
 
-    public void addNewGardenPlot(GardenPlot gardenPlot) {
+    public void saveOrUpdate(GardenPlot gardenPlot) {
         gardenPlotRepository.save(gardenPlot);
         log.info("New garden plot saved: " + gardenPlot.toString());
     }
