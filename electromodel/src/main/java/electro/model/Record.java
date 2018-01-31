@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
-@JsonIgnoreProperties({"date"})
 public class Record implements Serializable {
 
     @Id
@@ -24,25 +23,31 @@ public class Record implements Serializable {
     //private LocalDateTime date;
     private Date date;
     private Long count;
+    private Boolean payment;
 
     public Record() {
     }
 
-    public Record(Long gardenPlotId, Date date, Long count) {
+    public Record(Long gardenPlotId, Date date, Long count, Boolean payment) {
         this.gardenPlotId = gardenPlotId;
         this.date = date;
         this.count = count;
+        this.payment = payment;
     }
 
     public Long getId() {
         return id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Long getGardenPlotId() {
         return gardenPlotId;
     }
 
-    public void setGardenPlotId(Long gardenPlot) {
+    public void setGardenPlotId(Long gardenPlotId) {
         this.gardenPlotId = gardenPlotId;
     }
 
@@ -60,6 +65,14 @@ public class Record implements Serializable {
 
     public void setCount(Long count) {
         this.count = count;
+    }
+
+    public Boolean isPayment() {
+        return payment;
+    }
+
+    public void setPayment(Boolean payment) {
+        this.payment = payment;
     }
 
     @Override

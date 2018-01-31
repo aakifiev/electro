@@ -10,6 +10,6 @@ public interface RecordRepository extends CrudRepository<Record, Long> {
 
     public List<Record> getAllByGardenPlotId(Long gardenPlotId);
 
-    public Record findTopByGardenPlotIdOrderByDateDesc(Long gardenPlotId);
+    public Record findTopByGardenPlotIdAndPaymentOrderByDateDesc(Long gardenPlotId, boolean isPayment);
 
 }

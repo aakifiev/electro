@@ -1,4 +1,4 @@
-package elctro.bot.util;
+package electro.bot.util;
 
 import org.telegram.telegrambots.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.api.objects.PhotoSize;

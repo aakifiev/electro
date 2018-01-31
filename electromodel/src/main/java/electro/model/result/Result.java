@@ -15,7 +15,6 @@ public class Result<T> {
     }
 
     public static <T> Result<T> success(final T data) {
-        //return new Result<>(null, data);
         return new Result<>(null, data);
     }
 

@@ -26,17 +26,32 @@ public class RecordService {
     private static final Logger log = LoggerFactory.getLogger(RecordService.class);
 
     @Transactional
-    public Long addNewRecord(Long gardenPlotId, Long count) {
+    public Record addNewElectroCount(Record record) {
         log.info("searchrecord: ");
-        Record lastRecord = recordRepository.findTopByGardenPlotIdOrderByDateDesc(gardenPlotId);
+        Long gardenPlotId = record.getGardenPlotId();
+        //TODO check last record on null
+        Record lastRecord = recordRepository.findTopByGardenPlotIdAndPaymentOrderByDateDesc(gardenPlotId, false);
         log.info("lastrecord: " + lastRecord.toString());
-        Record newRecord = new Record(gardenPlotId, new Date(), count);
+        Record newRecord = new Record(gardenPlotId, new Date(), record.getCount(), false);
         recordRepository.save(newRecord);
         log.info("New record for garden plot with id: " + gardenPlotId + " added.");
         GardenPlot gardenPlotForUpdate = gardenPlotService.getGardenPlotById(gardenPlotId);
         gardenPlotForUpdate.setBill(gardenPlotForUpdate.getBill() + (newRecord.getCount() - lastRecord.getCount()) * 4);
         gardenPlotService.saveOrUpdate(gardenPlotForUpdate);
-        return newRecord.getId();
+        return newRecord;
+    }
+
+    @Transactional
+    public Record addNewElectroPayment(Record record) {
+        log.info("searchrecord: ");
+        Long gardenPlotId = record.getGardenPlotId();
+        Record newRecord = new Record(gardenPlotId, new Date(), record.getCount(), true);
+        recordRepository.save(newRecord);
+        log.info("New record for garden plot with id: " + gardenPlotId + " added.");
+        GardenPlot gardenPlotForUpdate = gardenPlotService.getGardenPlotById(gardenPlotId);
+        gardenPlotForUpdate.setBill(gardenPlotForUpdate.getBill() - newRecord.getCount());
+        gardenPlotService.saveOrUpdate(gardenPlotForUpdate);
+        return newRecord;
     }
 
     public List<Record> getRecordsByGardenPlotId(Long gardenPlotId) {

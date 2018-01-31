@@ -2,9 +2,11 @@ package electro.model.client;
 
 import electro.model.GardenPlot;
 import electro.model.result.GardenPlotResult;
+import org.springframework.stereotype.Component;
 
 import static electro.model.utils.GardenConstants.*;
 
+@Component
 public class GardenPlotClient extends Client {
 
     private static final String SERVICE_PATH = "/electro";

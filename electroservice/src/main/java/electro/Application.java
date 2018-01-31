@@ -43,7 +43,7 @@ public class Application {
             GardenPlot gardenPlot = new GardenPlot(272L, "Anton", "Akifev");
             gardenPlot.setBill(1100L);
             gardenPlotService.saveOrUpdate(gardenPlot);
-            recordRepository.save(new Record(gardenPlot.getId(), new Date(), 0L));
+            recordRepository.save(new Record(gardenPlot.getId(), new Date(), 0L, Boolean.FALSE));
             /*Long id = recordService.addNewRecord(gardenPlot.getId(), 6415L);
             GardenPlot gardenPlotById = gardenPlotService.getGardenPlotById(272L);
             System.out.println(gardenPlotById);*/
